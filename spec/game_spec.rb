@@ -10,12 +10,12 @@ describe Game do
         expect(game.player_1).to eq player_1
       end
     end
-  
+
     describe '#player_2' do
       it 'retrieves the second player' do
         expect(game.player_2).to eq player_2
       end
-    end 
+    end
 
   describe '#attack' do
     it 'reduces hit points of opponent' do
@@ -23,5 +23,13 @@ describe Game do
       game.attack(player_2)
     end
   end
-  
+
+  describe '#switch_player' do
+    it 'switches player' do
+      game.switch_player(player_2)
+      expect(player_1).to receive(:reduce_hit_points)
+      game.attack(player_1)
+    end
+  end
+
 end

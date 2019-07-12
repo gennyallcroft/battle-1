@@ -19,12 +19,13 @@ enable :sessions
 
   get '/play' do
     @game = $game
+    @game.switch_player(@game.other_player)
     erb :play
   end
 
   get '/attack' do
     @game = $game
-    @game.attack(@game.player_2)
+    @game.attack(@game.other_player)
     erb :attack
   end
 
